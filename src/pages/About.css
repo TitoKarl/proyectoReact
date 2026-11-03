@@ -1,0 +1,14 @@
+.about-content {
+  padding: 24px;
+  text-align: center;
+}
+
+.about-content h1 {
+  margin-bottom: 8px;
+}
+
+.about-content p {
+  color: #8c8c8c;
+  margin: 0 auto;
+  max-width: 480px;
+}

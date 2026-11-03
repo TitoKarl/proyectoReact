@@ -1,7 +1,18 @@
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import {
+  IonApp,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
+  setupIonicReact,
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { home, informationCircle, informationCircleOutline, homeOutline } from 'ionicons/icons';
 import { Navigate, Route } from 'react-router-dom';
 
+import About from './pages/About';
 import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
@@ -39,10 +50,25 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Navigate to="/home" replace />} />
-      </IonRouterOutlet>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="home" href="/home">
+            <IonIcon icon={home} />
+            <IonIcon slot="selected" icon={homeOutline} />
+            <IonLabel>Home</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="about" href="/about">
+            <IonIcon icon={informationCircle} />
+            <IonIcon slot="selected" icon={informationCircleOutline} />
+            <IonLabel>About</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
